@@ -33,13 +33,17 @@ const HomePage = () => {
   }, [result.data]);
 
   const onClickCTA = useCallback(async () => {
-    const tx = await writeContractAsync({
-      abi: ABI,
-      address: CONTRACT_ADDRESS,
-      functionName: 'claimInterest',
-      args: [address],
-    });
-    window.alert(tx);
+    try {
+      const tx = await writeContractAsync({
+        abi: ABI,
+        address: CONTRACT_ADDRESS,
+        functionName: 'claimInterest',
+        args: [address],
+      });
+      window.alert(tx);
+    } catch (e) {
+      window.alert(e.message);
+    }
   }, [address, writeContractAsync]);
 
   return (
