@@ -57,7 +57,7 @@ const ClaimWinPrizePage: NextPage = () => {
       </Title>
       <Box>
         <Token>
-          {tokenAmount} <span className="tick">{`$GBLST`}</span>
+          {tokenAmount} <span className="tick">{`$USDT`}</span>
         </Token>
         <Address>
           {!address ? 'Connect Account' : shortenAddress(address)}
