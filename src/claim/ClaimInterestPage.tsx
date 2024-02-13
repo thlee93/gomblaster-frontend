@@ -1,8 +1,9 @@
-import { Logo } from '@/components/Logo';
 import styled from '@emotion/styled';
-import React, { useCallback, useEffect, useState } from 'react';
-import { useWriteContract, useAccount, useReadContract } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useAccount, useReadContract, useWriteContract } from 'wagmi';
+
+import { Logo } from '@/components/Logo';
 import { ABI } from '@/utils/abi';
 import { CONTRACT_ADDRESS } from '@/utils/config';
 

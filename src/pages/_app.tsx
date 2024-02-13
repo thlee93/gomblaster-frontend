@@ -1,12 +1,12 @@
-import { AppProps } from 'next/app';
-import React from 'react';
-import { Poppins } from 'next/font/google';
+import { RainbowKitProvider, getDefaultConfig } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
-
-import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { AppProps } from 'next/app';
+import { Poppins } from 'next/font/google';
+import React from 'react';
 import { WagmiProvider } from 'wagmi';
 import { blastSepolia } from 'wagmi/chains';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+
 import { GlobalStyle } from '@/components/GlobalStyle';
 
 const poppins = Poppins({

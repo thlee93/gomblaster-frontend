@@ -1,10 +1,11 @@
-import { Logo } from '@/components/Logo';
 import styled from '@emotion/styled';
-import React, { useCallback, useEffect, useState } from 'react';
-import { useWriteContract, useAccount } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { ABI } from '@/utils/abi';
 import { NextPage } from 'next';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useAccount, useWriteContract } from 'wagmi';
+
+import { Logo } from '@/components/Logo';
+import { ABI } from '@/utils/abi';
 import { CONTRACT_ADDRESS } from '@/utils/config';
 
 const shortenAddress = (address: string | null | undefined) => {
