@@ -9,7 +9,6 @@ export const GlobalStyle: React.FC = () => (
       * {
         box-sizing: border-box;
         word-break: keep-all;
-        font-family: 'Poppins';
       }
 
       a {

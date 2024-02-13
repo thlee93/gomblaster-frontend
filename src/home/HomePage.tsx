@@ -35,8 +35,6 @@ const Container = styled.div`
 `;
 const Title = styled.h2`
   margin: 56px 0 56px;
-
-  /* font-family: Poppins */
   font-weight: 800;
   font-size: 24px;
   line-height: 28px;
