@@ -1,10 +1,47 @@
 import { Logo } from '@/components/Logo';
 import styled from '@emotion/styled';
-import React from 'react';
-
+import React, { useCallback, useEffect, useState } from 'react';
+import { useWriteContract, useAccount, useReadContract } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ABI } from '@/utils/abi';
+
+const shortenAddress = (address: string | null | undefined) => {
+  if (!address) return '';
+  return address.slice(0, 6) + '...' + address.slice(-4);
+};
+
+const CONTRACT_ADDRESS: `0x${string}` = '0x0'; // 여기에 컨트랙트 주소 입력
 
 const HomePage = () => {
+  const { address } = useAccount();
+  const { writeContractAsync } = useWriteContract();
+
+  const [tokenAmount, setTokenAmount] = useState<string>('???');
+
+  // claimableInterest readcontract
+  const result = useReadContract({
+    abi: ABI,
+    address: CONTRACT_ADDRESS,
+    functionName: 'claimableInterest',
+    args: [address],
+  });
+
+  useEffect(() => {
+    if (!!result.data) {
+      setTokenAmount((result.data / 10n ** 18n).toLocaleString());
+    }
+  }, [result.data]);
+
+  const onClickCTA = useCallback(async () => {
+    const tx = await writeContractAsync({
+      abi: ABI,
+      address: CONTRACT_ADDRESS,
+      functionName: 'claimInterest',
+      args: [address],
+    });
+    window.alert(tx);
+  }, [address, writeContractAsync]);
+
   return (
     <Container>
       <NavigationBar>
@@ -18,10 +55,12 @@ const HomePage = () => {
       </Title>
       <Box>
         <Token>
-          200 <span className="tick">{`$GBLST`}</span>
+          {tokenAmount} <span className="tick">{`$GBLST`}</span>
         </Token>
-        <Address>0x0000</Address>
-        <CTA>Claim</CTA>
+        <Address>
+          {!address ? 'Connect Account' : shortenAddress(address)}
+        </Address>
+        <CTA onClick={onClickCTA}>Claim</CTA>
       </Box>
     </Container>
   );
