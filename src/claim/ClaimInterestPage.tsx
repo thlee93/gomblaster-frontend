@@ -4,13 +4,12 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useWriteContract, useAccount, useReadContract } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { ABI } from '@/utils/abi';
+import { CONTRACT_ADDRESS } from '@/utils/config';
 
 const shortenAddress = (address: string | null | undefined) => {
   if (!address) return '';
   return address.slice(0, 6) + '...' + address.slice(-4);
 };
-
-const CONTRACT_ADDRESS: `0x${string}` = '0x0'; // 여기에 컨트랙트 주소 입력
 
 const HomePage = () => {
   const { address } = useAccount();
@@ -28,6 +27,7 @@ const HomePage = () => {
 
   useEffect(() => {
     if (!!result.data) {
+      // TODO: DECIMALS 맞나 확인:
       setTokenAmount((result.data / 10n ** 18n).toLocaleString());
     }
   }, [result.data]);

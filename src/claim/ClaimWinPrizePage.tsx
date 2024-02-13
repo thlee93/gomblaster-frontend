@@ -1,17 +1,16 @@
 import { Logo } from '@/components/Logo';
 import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useState } from 'react';
-import { useWriteContract, useAccount, useReadContract } from 'wagmi';
+import { useWriteContract, useAccount } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { ABI } from '@/utils/abi';
 import { NextPage } from 'next';
+import { CONTRACT_ADDRESS } from '@/utils/config';
 
 const shortenAddress = (address: string | null | undefined) => {
   if (!address) return '';
   return address.slice(0, 6) + '...' + address.slice(-4);
 };
-
-const CONTRACT_ADDRESS: `0x${string}` = '0x0'; // 여기에 컨트랙트 주소 입력
 
 const ClaimWinPrizePage: NextPage = () => {
   const { address } = useAccount();
@@ -19,7 +18,7 @@ const ClaimWinPrizePage: NextPage = () => {
 
   const [tokenAmount, setTokenAmount] = useState<string>('???');
 
-  // TODO: 컨트랙트에서 _userInfoMap[user].winAmount 반환하는 claimableWinPrize 구현해야 함.
+  // TODO: 컨트랙트에서 _userInfoMap[user].winAmount 반환하는 claimableWinPrize 구현해야 함. 완료 후, @utils/abi.ts 업데이트 한 다음 아래 코드 주석 해제하면 됨.
   // const result = useReadContract({
   //   abi: ABI,
   //   address: CONTRACT_ADDRESS,
@@ -30,6 +29,7 @@ const ClaimWinPrizePage: NextPage = () => {
 
   useEffect(() => {
     if (!!result.data) {
+      // TODO: DECIMALS 맞나 확인:
       setTokenAmount((result.data / 10n ** 18n).toLocaleString());
     }
   }, [result.data]);
