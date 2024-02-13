@@ -2,9 +2,14 @@ import { Logo } from '@/components/Logo';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
 const HomePage = () => {
   return (
     <Container>
+      <NavigationBar>
+        <ConnectButton />
+      </NavigationBar>
       <Logo width="342px" height="92px" />
       <h1 style={{ display: 'none' }}>Gomblaster: Mobile Game Profit Share</h1>
       <Title>
@@ -24,6 +29,15 @@ const HomePage = () => {
 
 export default HomePage;
 
+const NavigationBar = styled.nav`
+  position: fixed;
+  top: 0;
+  padding: 32px 32px;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-end;
+`;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
