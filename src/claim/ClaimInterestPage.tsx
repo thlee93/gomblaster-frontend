@@ -16,7 +16,7 @@ const HomePage = () => {
   const { address } = useAccount();
   const { writeContractAsync } = useWriteContract();
 
-  const [tokenAmount, setTokenAmount] = useState<string>('???');
+  const [tokenAmount, setTokenAmount] = useState<string>('200');
 
   // claimableInterest readcontract
   const result = useReadContract({
