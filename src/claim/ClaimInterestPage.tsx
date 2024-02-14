@@ -5,7 +5,7 @@ import { useAccount, useReadContract, useWriteContract } from 'wagmi';
 
 import { Logo } from '@/components/Logo';
 import { ABI } from '@/utils/abi';
-import { CONTRACT_ADDRESS } from '@/utils/config';
+import { FEE_SHARING_CONTRACT_ADDRESS } from '@/utils/config';
 
 const shortenAddress = (address: string | null | undefined) => {
   if (!address) return '';
@@ -21,7 +21,7 @@ const HomePage = () => {
   // claimableInterest readcontract
   const result = useReadContract({
     abi: ABI,
-    address: CONTRACT_ADDRESS,
+    address: FEE_SHARING_CONTRACT_ADDRESS,
     functionName: 'claimableInterest',
     args: [address],
   });
@@ -37,7 +37,7 @@ const HomePage = () => {
     try {
       const tx = await writeContractAsync({
         abi: ABI,
-        address: CONTRACT_ADDRESS,
+        address: FEE_SHARING_CONTRACT_ADDRESS,
         functionName: 'claimInterest',
         args: [address],
       });
