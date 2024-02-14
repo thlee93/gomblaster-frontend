@@ -197,7 +197,7 @@ export const ABI = [
         type: 'address',
       },
     ],
-    name: 'claimInterest',
+    name: 'claim',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -210,7 +210,7 @@ export const ABI = [
         type: 'address',
       },
     ],
-    name: 'claimWinPrize',
+    name: 'claim',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -223,7 +223,7 @@ export const ABI = [
         type: 'address',
       },
     ],
-    name: 'claimableInterest',
+    name: 'claimable',
     outputs: [
       {
         internalType: 'uint256',
