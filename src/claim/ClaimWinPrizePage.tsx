@@ -40,7 +40,7 @@ const ClaimWinPrizePage: NextPage = () => {
       const tx = await writeContractAsync({
         abi: ABI,
         address: CONTRACT_ADDRESS,
-        functionName: 'claimWinPrize',
+        functionName: 'claim',
         args: [address],
       });
       window.alert(tx);

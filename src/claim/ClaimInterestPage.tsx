@@ -22,7 +22,7 @@ const HomePage = () => {
   const result = useReadContract({
     abi: ABI,
     address: FEE_SHARING_CONTRACT_ADDRESS,
-    functionName: 'claimableInterest',
+    functionName: 'claimable',
     args: [address],
   });
 
@@ -38,7 +38,7 @@ const HomePage = () => {
       const tx = await writeContractAsync({
         abi: ABI,
         address: FEE_SHARING_CONTRACT_ADDRESS,
-        functionName: 'claimInterest',
+        functionName: 'claim',
         args: [address],
       });
       window.alert(tx);
