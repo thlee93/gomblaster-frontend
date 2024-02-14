@@ -17,7 +17,7 @@ const ClaimWinPrizePage: NextPage = () => {
   const { address } = useAccount();
   const { writeContractAsync } = useWriteContract();
 
-  const [tokenAmount, setTokenAmount] = useState<string>('???');
+  const [tokenAmount, setTokenAmount] = useState<string>('400');
 
   // TODO: 컨트랙트에서 _userInfoMap[user].winAmount 반환하는 claimableWinPrize 구현해야 함. 완료 후, @utils/abi.ts 업데이트 한 다음 아래 코드 주석 해제하면 됨.
   // const result = useReadContract({
